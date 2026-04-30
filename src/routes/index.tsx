@@ -51,10 +51,11 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="text-2xl font-serif tracking-widest text-gold">MR. DEN</div>
           
-          <div className="hidden lg:flex gap-8 text-sm uppercase tracking-widest font-medium">
+          <div className="hidden lg:flex gap-6 xl:gap-8 text-sm uppercase tracking-widest font-medium">
             <a href="#services" className="hover:text-gold transition-colors">{t.nav.services}</a>
             <a href="#about" className="hover:text-gold transition-colors">{t.nav.about}</a>
             <a href="#gallery" className="hover:text-gold transition-colors">{t.nav.gallery}</a>
+            <a href="#reviews" className="hover:text-gold transition-colors">Reviews</a>
             <a href="#location" className="hover:text-gold transition-colors">{t.location.tagline}</a>
           </div>
 
@@ -93,7 +94,7 @@ function Home() {
           <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.55)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.55)_1px,transparent_1px)] [background-size:72px_72px]"></div>
         </div>
         
-        <div className="relative z-10 mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-14 lg:grid-cols-2">
           <div className="max-w-3xl">
             <span className="text-gold uppercase tracking-[0.3em] text-xs md:text-sm mb-5 block font-semibold animate-in fade-in slide-in-from-top-4 duration-1000">{t.hero.tagline}</span>
             <h1 className="text-balance text-5xl md:text-7xl xl:text-8xl font-serif mb-8 leading-[0.94] italic animate-in fade-in slide-in-from-bottom-6 duration-1000">
@@ -133,11 +134,11 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative hidden min-h-[560px] lg:block">
+          <div className="relative hidden lg:flex lg:items-center">
             <button
               type="button"
               onClick={() => openImage(heroImages[0].src, heroImages[0].alt)}
-              className="absolute inset-y-0 right-0 my-auto h-[76%] w-[82%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
+              className="relative h-[520px] w-full max-w-3xl overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
               aria-label="Open Mr. Den storefront image"
             >
               <img src={heroImages[0].src} alt={heroImages[0].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
@@ -262,7 +263,7 @@ function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-28 md:py-32 px-6 bg-[#120f0c] border-y border-white/10">
+      <section id="reviews" className="scroll-mt-24 py-28 md:py-32 px-6 bg-[#120f0c] border-y border-white/10">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
                 <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.testimonials.tagline}</h2>
@@ -307,7 +308,7 @@ function Home() {
                             <img
                                 src={img}
                                 alt={`Gallery ${i + 1}`}
-                                className="h-[380px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                className="h-[380px] w-full object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                             />
                         </button>
                         <div className="pointer-events-none absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
