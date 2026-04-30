@@ -64,7 +64,7 @@ export const translations = {
       hours: "Hours",
       daily: "Daily",
       sunday: "Sunday",
-      rights: "© 2024 Mr. Den Barbershop. All Rights Reserved."
+      rights: "© 2026 Mr. Den Barbershop. All Rights Reserved."
     },
     booking: {
       title: "Reserve Your",
@@ -167,7 +167,7 @@ export const translations = {
       hours: "Giờ Mở Cửa",
       daily: "Hàng Ngày",
       sunday: "Chủ Nhật",
-      rights: "© 2024 Mr. Den Barbershop. Bảo lưu mọi quyền."
+      rights: "© 2026 Mr. Den Barbershop. All Rights Reserved."
     },
     booking: {
       title: "Đặt Lịch Chờ",

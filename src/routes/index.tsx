@@ -134,7 +134,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative hidden lg:flex lg:items-center">
+          <div className="relative hidden lg:flex lg:items-start">
             <button
               type="button"
               onClick={() => openImage(heroImages[0].src, heroImages[0].alt)}
@@ -350,15 +350,21 @@ function Home() {
                                 </a>
                             </div>
                         </div>
-                        <div className="flex gap-6 border border-white/10 bg-white/[0.03] p-5">
+                        <div className="flex gap-4 sm:gap-6 border border-white/10 bg-white/[0.03] p-5">
                              <div className="w-12 h-12 border border-gold/30 flex items-center justify-center text-gold shrink-0">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
-                            <div>
+                            <div className="min-w-0 flex-1">
                                 <h4 className="text-xs uppercase tracking-widest font-bold mb-2 text-stone-500">{t.footer.hours}</h4>
-                                <div className="text-lg font-light leading-relaxed">
-                                    <p>{t.footer.daily}: 8:30am - 8:30pm</p>
-                                    <p>{t.footer.sunday}: 9:00am - 6:00pm</p>
+                                <div className="space-y-1 text-base sm:text-lg font-light leading-relaxed">
+                                    <p className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+                                        <span className="min-w-0">{t.footer.daily}</span>
+                                        <span className="whitespace-nowrap text-right tabular-nums">8:30am - 8:30pm</span>
+                                    </p>
+                                    <p className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+                                        <span className="min-w-0">{t.footer.sunday}</span>
+                                        <span className="whitespace-nowrap text-right tabular-nums">9:00am - 6:00pm</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -405,9 +411,15 @@ function Home() {
           </div>
           <div>
             <h4 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">{t.footer.hours}</h4>
-            <ul className="text-stone-400 font-light space-y-2">
-              <li className="flex justify-between"><span>{t.footer.daily}</span> <span>8:30am - 8:30pm</span></li>
-              <li className="flex justify-between"><span>{t.footer.sunday}</span> <span>9:00am - 6:00pm</span></li>
+            <ul className="text-stone-400 font-light space-y-2 text-sm sm:text-base">
+              <li className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+                <span className="min-w-0">{t.footer.daily}</span>
+                <span className="whitespace-nowrap text-right tabular-nums">8:30am - 8:30pm</span>
+              </li>
+              <li className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+                <span className="min-w-0">{t.footer.sunday}</span>
+                <span className="whitespace-nowrap text-right tabular-nums">9:00am - 6:00pm</span>
+              </li>
             </ul>
           </div>
         </div>
