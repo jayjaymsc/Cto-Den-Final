@@ -37,8 +37,7 @@ function Home() {
     '/images/744026b4-146d-4969-9545-5532eed34562.jpg',
     '/images/514535933_647796581645482_4151797699682575246_n.jpg',
     '/images/image (2).png',
-    '/images/image.png',
-    '/images/1.jpg'
+    '/images/image.png'
   ]
 
   const serviceImages = [
@@ -314,9 +313,9 @@ function Home() {
                 <p className="text-pretty text-stone-400 max-w-2xl mx-auto font-light">{t.gallery.desc}</p>
             </div>
             
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div className="grid gap-6 md:grid-cols-2">
                 {galleryImages.map((img, i) => (
-                    <div key={i} className="relative group overflow-hidden break-inside-avoid border border-white/10 bg-[#1a1511]">
+                    <div key={i} className="relative group overflow-hidden border border-white/10 bg-[#1a1511]">
                         <button
                             type="button"
                             onClick={() => openImage(img, `Gallery ${i + 1}`)}
@@ -326,7 +325,7 @@ function Home() {
                             <img
                                 src={img}
                                 alt={`Gallery ${i + 1}`}
-                                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                className="h-[380px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                             />
                         </button>
                         <div className="pointer-events-none absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
