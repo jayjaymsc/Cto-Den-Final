@@ -16,6 +16,7 @@ function BookingPage() {
   const t = translations[lang]
   const [step, setStep] = useState(1)
   const [selectedService, setSelectedService] = useState<string | null>(null)
+  const [bookingMessage, setBookingMessage] = useState('')
 
   const services = [
     { id: '1', name: t.services.list[0].title, price: '100.000đ', duration: '45 min' },
@@ -25,9 +26,9 @@ function BookingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-200">
+    <div className="min-h-screen overflow-hidden bg-[#0b0907] text-stone-200">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-stone-950/80 backdrop-blur-md border-b border-stone-800">
+      <nav className="fixed top-0 w-full z-50 bg-[#0b0907]/85 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link to="/" className="text-2xl font-serif tracking-widest text-gold">MR. DEN</Link>
           
@@ -51,11 +52,12 @@ function BookingPage() {
         </div>
       </nav>
 
-      <div className="pt-32 pb-20 px-6">
+      <div className="relative pt-32 pb-20 px-6">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(212,175,55,0.10),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_42%)]"></div>
         <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
-            <h1 className="text-5xl font-serif mb-4 italic">{t.booking.title} <span className="not-italic text-gold">{t.booking.titleAccent}</span></h1>
-            <p className="text-stone-400 font-light tracking-wide">{t.booking.desc}</p>
+            <h1 className="text-balance text-5xl md:text-6xl font-serif mb-4 italic">{t.booking.title} <span className="not-italic text-gold">{t.booking.titleAccent}</span></h1>
+            <p className="text-pretty text-stone-400 font-light tracking-wide">{t.booking.desc}</p>
             </div>
 
             {/* Progress bar */}
@@ -73,7 +75,7 @@ function BookingPage() {
                 ))}
             </div>
 
-            <div className="bg-stone-900/50 border border-stone-800 p-8 md:p-12 backdrop-blur-sm">
+            <div className="bg-[#1a1511]/90 border border-white/10 p-8 md:p-12 backdrop-blur-sm shadow-2xl shadow-black/30">
                 {step === 1 && (
                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <h2 className="text-2xl font-serif mb-8 text-gold">{t.booking.step1}</h2>
@@ -86,7 +88,7 @@ function BookingPage() {
                                         setStep(2)
                                     }}
                                     className={`w-full flex justify-between items-center p-6 border transition-all duration-300 group ${
-                                        selectedService === service.id ? 'border-gold bg-stone-800/50' : 'border-stone-800 hover:border-stone-600 bg-stone-900'
+                                        selectedService === service.id ? 'border-gold bg-gold/10' : 'border-white/10 hover:border-gold/50 bg-[#120f0c]'
                                     }`}
                                 >
                                     <div className="text-left">
@@ -108,7 +110,7 @@ function BookingPage() {
                         <h2 className="text-2xl font-serif mb-8 text-gold">{t.booking.step2}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {/* Placeholder for calendar */}
-                            <div className="p-6 border border-stone-800 bg-stone-900/50 text-center flex items-center justify-center">
+                            <div className="p-6 border border-white/10 bg-[#120f0c] text-center flex items-center justify-center">
                                 <p className="text-stone-500 text-sm italic">{lang === 'en' ? 'Calendar integration' : 'Tích hợp lịch'}</p>
                             </div>
                             <div className="grid grid-cols-3 gap-3">
@@ -116,7 +118,7 @@ function BookingPage() {
                                     <button 
                                         key={time}
                                         onClick={() => setStep(3)}
-                                        className="p-3 text-xs border border-stone-800 hover:border-gold hover:text-gold transition-all"
+                                        className="p-3 text-xs border border-white/10 bg-[#120f0c] hover:border-gold hover:text-gold transition-all active:scale-[0.98]"
                                     >
                                         {time}
                                     </button>
@@ -132,22 +134,30 @@ function BookingPage() {
                             {t.booking.backSchedule}
                         </button>
                         <h2 className="text-2xl font-serif mb-8 text-gold">{t.booking.step3}</h2>
-                        <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert(lang === 'en' ? 'Booking successful!' : 'Đặt lịch thành công!') }}>
+                        <form className="space-y-6" onSubmit={(e) => {
+                          e.preventDefault()
+                          setBookingMessage(lang === 'en' ? 'Booking request received. We will confirm your appointment shortly.' : 'Da nhan yeu cau dat lich. Chung toi se xac nhan lich hen som.')
+                        }}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">{t.booking.fullName}</label>
-                                    <input className="w-full bg-stone-900 border border-stone-800 p-4 focus:border-gold outline-none transition-colors" placeholder="John Doe" />
+                                    <input className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors" placeholder="Alex Nguyen" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">{t.booking.email}</label>
-                                    <input className="w-full bg-stone-900 border border-stone-800 p-4 focus:border-gold outline-none transition-colors" placeholder="john@example.com" />
+                                    <input className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors" placeholder="alex@example.com" />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">{t.booking.notes}</label>
-                                <textarea className="w-full bg-stone-900 border border-stone-800 p-4 focus:border-gold outline-none transition-colors h-32" placeholder={t.booking.notesPlaceholder}></textarea>
+                                <textarea className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors h-32" placeholder={t.booking.notesPlaceholder}></textarea>
                             </div>
-                            <button className="w-full bg-gold text-stone-950 p-5 text-sm uppercase tracking-[0.3em] font-bold hover:bg-primary transition-all shadow-xl shadow-gold/10">
+                            {bookingMessage && (
+                              <p className="border border-gold/30 bg-gold/10 p-4 text-sm text-gold">
+                                {bookingMessage}
+                              </p>
+                            )}
+                            <button className="w-full bg-gold text-stone-950 p-5 text-sm uppercase tracking-[0.3em] font-bold hover:bg-primary transition-all shadow-xl shadow-gold/10 active:scale-[0.98]">
                                 {t.booking.confirm}
                             </button>
                         </form>

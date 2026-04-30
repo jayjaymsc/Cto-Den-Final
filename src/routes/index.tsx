@@ -27,6 +27,12 @@ function Home() {
     price: '/images/price.png',
   }
 
+  const heroImages = [
+    { src: '/images/main.jpg', alt: 'Mr. Den storefront' },
+    { src: '/images/barbershop.jpg', alt: 'Mr. Den barbershop interior' },
+    { src: '/images/image.png', alt: 'Mr. Den cutting station' },
+  ]
+
   const galleryImages = [
     '/images/744026b4-146d-4969-9545-5532eed34562.jpg',
     '/images/514535933_647796581645482_4151797699682575246_n.jpg',
@@ -42,9 +48,9 @@ function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-200">
+    <div className="min-h-screen overflow-hidden bg-[#0b0907] text-stone-200">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-stone-950/80 backdrop-blur-md border-b border-stone-800">
+      <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-[#0b0907]/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="text-2xl font-serif tracking-widest text-gold">MR. DEN</div>
           
@@ -74,7 +80,7 @@ function Home() {
             
             <Link 
                 to="/book" 
-                className="hidden sm:block bg-gold text-stone-950 px-6 py-2.5 text-sm uppercase tracking-widest font-bold hover:bg-primary transition-all duration-300"
+                className="hidden sm:block bg-gold text-stone-950 px-6 py-2.5 text-sm uppercase tracking-widest font-bold hover:bg-primary transition-all duration-300 active:scale-[0.98]"
             >
                 {t.nav.book}
             </Link>
@@ -83,34 +89,78 @@ function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100dvh] overflow-hidden px-6 pt-28 pb-16">
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-stone-950"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-950 to-stone-950"></div>
+          <div className="w-full h-full bg-[#0b0907]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(212,175,55,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_40%)]"></div>
+          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.55)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.55)_1px,transparent_1px)] [background-size:72px_72px]"></div>
         </div>
         
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <span className="text-gold uppercase tracking-[0.3em] text-sm mb-4 block font-medium animate-in fade-in slide-in-from-top-4 duration-1000">{t.hero.tagline}</span>
-          <h1 className="text-5xl md:text-8xl font-serif mb-8 leading-tight italic animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            {t.hero.title} <br />
-            <span className="not-italic text-gold">{t.hero.titleAccent}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-stone-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-in fade-in duration-1000 delay-300">
-            {t.hero.desc}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-in fade-in duration-1000 delay-500">
-            <Link 
-              to="/book" 
-              className="bg-gold text-stone-950 px-10 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-primary transition-all duration-300 shadow-xl shadow-gold/10"
+        <div className="relative z-10 mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="max-w-3xl">
+            <span className="text-gold uppercase tracking-[0.3em] text-xs md:text-sm mb-5 block font-semibold animate-in fade-in slide-in-from-top-4 duration-1000">{t.hero.tagline}</span>
+            <h1 className="text-balance text-5xl md:text-7xl xl:text-8xl font-serif mb-8 leading-[0.94] italic animate-in fade-in slide-in-from-bottom-6 duration-1000">
+              {t.hero.title} <br />
+              <span className="not-italic text-gold">{t.hero.titleAccent}</span>
+            </h1>
+            <p className="text-pretty text-lg md:text-xl text-stone-300 mb-10 max-w-2xl font-light leading-relaxed animate-in fade-in duration-1000 delay-300">
+              {t.hero.desc}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in duration-1000 delay-500">
+              <Link 
+                to="/book" 
+                className="bg-gold text-stone-950 px-9 py-4 text-sm uppercase tracking-[0.18em] font-bold hover:bg-primary transition-all duration-300 shadow-xl shadow-gold/10 active:scale-[0.98]"
+              >
+                {t.hero.ctaBook}
+              </Link>
+              <a 
+                href="#services" 
+                className="border border-white/15 bg-white/[0.03] px-9 py-4 text-sm uppercase tracking-[0.18em] font-bold hover:border-gold/60 hover:bg-gold/10 transition-all duration-300 active:scale-[0.98]"
+              >
+                {t.hero.ctaServices}
+              </a>
+            </div>
+            <div className="mt-12 grid max-w-xl grid-cols-3 gap-5 border-t border-white/10 pt-8">
+              <div>
+                <div className="font-serif text-3xl text-gold">15+</div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-stone-500">{t.about.exp}</div>
+              </div>
+              <div>
+                <div className="font-serif text-3xl text-gold">10k+</div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-stone-500">{t.about.clients}</div>
+              </div>
+              <div>
+                <div className="font-serif text-3xl text-gold">217A</div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-stone-500">Phu Quoc</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative hidden min-h-[560px] lg:block">
+            <button
+              type="button"
+              onClick={() => openImage(heroImages[0].src, heroImages[0].alt)}
+              className="absolute right-0 top-0 h-[62%] w-[72%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
+              aria-label="Open Mr. Den storefront image"
             >
-              {t.hero.ctaBook}
-            </Link>
-            <a 
-              href="#services" 
-              className="border border-stone-700 px-10 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-stone-800 transition-all duration-300"
+              <img src={heroImages[0].src} alt={heroImages[0].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+            </button>
+            <button
+              type="button"
+              onClick={() => openImage(heroImages[1].src, heroImages[1].alt)}
+              className="absolute left-0 bottom-0 h-[50%] w-[52%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
+              aria-label="Open Mr. Den interior image"
             >
-              {t.hero.ctaServices}
-            </a>
+              <img src={heroImages[1].src} alt={heroImages[1].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+            </button>
+            <button
+              type="button"
+              onClick={() => openImage(heroImages[2].src, heroImages[2].alt)}
+              className="absolute bottom-8 right-12 h-[38%] w-[36%] overflow-hidden border border-gold/30 bg-stone-900 text-left shadow-2xl shadow-black/50 cursor-zoom-in"
+              aria-label="Open Mr. Den cutting station image"
+            >
+              <img src={heroImages[2].src} alt={heroImages[2].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+            </button>
           </div>
         </div>
         
@@ -120,22 +170,22 @@ function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 px-6 bg-stone-900/30">
+      <section id="services" className="relative py-28 md:py-32 px-6 bg-[#120f0c]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
             <div className="max-w-2xl">
               <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.services.tagline}</h2>
-              <h3 className="text-5xl md:text-6xl font-serif">{t.services.title}</h3>
+              <h3 className="text-balance text-5xl md:text-6xl font-serif leading-tight">{t.services.title}</h3>
             </div>
-            <p className="text-stone-400 max-w-md font-light leading-relaxed">
+            <p className="text-pretty text-stone-400 max-w-md font-light leading-relaxed">
               {t.services.desc}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
             {t.services.list.map((service, i) => (
-              <div key={i} className="group relative overflow-hidden bg-stone-900 border border-stone-800 hover:border-gold/50 transition-colors duration-500">
-                <div className="h-64 overflow-hidden">
+              <div key={i} className={`group relative overflow-hidden border border-white/10 bg-[#1a1511] transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-2xl hover:shadow-black/30 ${i < 2 ? 'lg:col-span-3' : 'md:col-span-2 lg:col-span-6 lg:grid lg:grid-cols-[0.9fr_1.1fr]'}`}>
+                <div className={`${i === 2 ? 'h-80 lg:h-full' : 'h-72'} overflow-hidden`}>
                   <button
                     type="button"
                     onClick={() => openImage(serviceImages[i], service.title)}
@@ -149,13 +199,13 @@ function Home() {
                     />
                   </button>
                 </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-center mb-4">
-                    <h4 className="text-2xl font-serif">{service.title}</h4>
-                    <span className="text-gold font-bold">{service.price}</span>
+                <div className="flex min-h-72 flex-col p-8 md:p-10">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-5">
+                    <h4 className="text-3xl font-serif leading-tight">{service.title}</h4>
+                    <span className="shrink-0 text-gold font-bold tabular-nums">{service.price}</span>
                   </div>
-                  <p className="text-stone-400 text-sm font-light leading-relaxed mb-6">{service.desc}</p>
-                  <Link to="/book" className="text-xs uppercase tracking-widest font-bold text-gold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
+                  <p className="text-pretty text-stone-400 text-sm font-light leading-relaxed mb-8">{service.desc}</p>
+                  <Link to="/book" className="mt-auto text-xs uppercase tracking-widest font-bold text-gold group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
                     {t.services.bookNow} <span>→</span>
                   </Link>
                 </div>
@@ -166,18 +216,18 @@ function Home() {
       </section>
 
       {/* Price Menu Section */}
-      <section className="py-24 px-6 border-y border-stone-900 bg-stone-950">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
+      <section className="py-24 px-6 border-y border-white/10 bg-[#0b0907]">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
           <div>
             <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.services.tagline}</h2>
-            <h3 className="text-5xl font-serif mb-6">{lang === 'en' ? 'Gentleman List' : 'Bang Gia Dich Vu'}</h3>
-            <p className="text-stone-400 font-light leading-relaxed">
+            <h3 className="text-balance text-5xl font-serif mb-6 leading-tight">{lang === 'en' ? 'Gentleman List' : 'Bang Gia Dich Vu'}</h3>
+            <p className="text-pretty text-stone-400 font-light leading-relaxed">
               {lang === 'en'
                 ? 'Full menu pricing for haircuts, grooming, color, massage, and care services.'
                 : 'Bang gia day du cho cac dich vu cat toc, cham soc, nhuom, massage va lam dep.'}
             </p>
           </div>
-          <div className="bg-stone-900 border border-stone-800 p-3">
+          <div className="bg-[#f8f1e5] border border-gold/30 p-3 shadow-2xl shadow-black/30">
             <button
               type="button"
               onClick={() => openImage(images.price, 'Mr. Den service price menu')}
@@ -195,35 +245,35 @@ function Home() {
       </section>
 
       {/* Philosophy Section */}
-      <section id="about" className="py-32 px-6 flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
-        <div className="md:w-1/2 relative">
+      <section id="about" className="py-28 md:py-32 px-6 grid gap-16 md:grid-cols-[0.9fr_1.1fr] items-center max-w-7xl mx-auto">
+        <div className="relative">
           <div className="absolute -inset-4 border border-gold/20 translate-x-4 translate-y-4"></div>
           <button
             type="button"
             onClick={() => openImage(images.about, 'Precision Barbering')}
-            className="relative z-10 block w-full cursor-zoom-in text-left"
+            className="relative z-10 block w-full overflow-hidden cursor-zoom-in text-left shadow-2xl shadow-black/40"
             aria-label="Open precision barbering image"
           >
             <img
               src={images.about}
               alt="Precision Barbering"
-              className="w-full h-auto grayscale-0 transition-all duration-700 shadow-2xl"
+              className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
             />
           </button>
         </div>
-        <div className="md:w-1/2">
+        <div>
           <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.about.tagline}</h2>
-          <h3 className="text-5xl font-serif mb-8 leading-tight">{t.about.title}</h3>
-          <p className="text-stone-400 mb-8 font-light leading-relaxed">
+          <h3 className="text-balance text-5xl md:text-6xl font-serif mb-8 leading-tight">{t.about.title}</h3>
+          <p className="text-pretty text-stone-400 mb-8 font-light leading-relaxed max-w-2xl">
             {t.about.desc}
           </p>
-          <div className="grid grid-cols-2 gap-8 mb-10">
-            <div>
-              <div className="text-3xl font-serif text-gold mb-2">15+</div>
+          <div className="grid grid-cols-2 gap-4 max-w-xl">
+            <div className="border border-white/10 bg-white/[0.03] p-6">
+              <div className="text-4xl font-serif text-gold mb-2 tabular-nums">15+</div>
               <div className="text-xs uppercase tracking-widest font-bold">{t.about.exp}</div>
             </div>
-            <div>
-              <div className="text-3xl font-serif text-gold mb-2">10k+</div>
+            <div className="border border-white/10 bg-white/[0.03] p-6">
+              <div className="text-4xl font-serif text-gold mb-2 tabular-nums">10k+</div>
               <div className="text-xs uppercase tracking-widest font-bold">{t.about.clients}</div>
             </div>
           </div>
@@ -231,20 +281,20 @@ function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 px-6 bg-stone-950 border-y border-stone-900">
+      <section className="py-28 md:py-32 px-6 bg-[#120f0c] border-y border-white/10">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
                 <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.testimonials.tagline}</h2>
-                <h3 className="text-5xl font-serif mb-4 italic">{t.testimonials.title} <span className="not-italic text-gold">{t.testimonials.titleAccent}</span></h3>
+                <h3 className="text-balance text-5xl font-serif mb-4 italic">{t.testimonials.title} <span className="not-italic text-gold">{t.testimonials.titleAccent}</span></h3>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-3 gap-6">
                 {t.testimonials.list.map((item, i) => (
-                    <div key={i} className="relative p-10 bg-stone-900/40 border border-stone-800 flex flex-col justify-between">
+                    <div key={i} className="relative p-8 md:p-10 bg-[#1a1511] border border-white/10 flex flex-col justify-between">
                         <div className="text-gold mb-8">
                             <svg className="w-10 h-10 opacity-20" fill="currentColor" viewBox="0 0 32 32"><path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"></path></svg>
                         </div>
-                        <p className="text-stone-300 font-light italic leading-relaxed mb-8">"{item.text}"</p>
+                        <p className="text-pretty text-stone-300 font-light italic leading-relaxed mb-8">"{item.text}"</p>
                         <div>
                             <div className="h-px w-12 bg-gold/50 mb-4"></div>
                             <p className="text-xs uppercase tracking-widest font-bold text-gold">{item.author}</p>
@@ -256,17 +306,17 @@ function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-32 px-6 border-t border-stone-900">
+      <section id="gallery" className="py-28 md:py-32 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
                 <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.nav.gallery}</h2>
-                <h3 className="text-5xl font-serif mb-6 italic">{t.gallery.tagline}</h3>
-                <p className="text-stone-400 max-w-2xl mx-auto font-light">{t.gallery.desc}</p>
+                <h3 className="text-balance text-5xl md:text-6xl font-serif mb-6 italic">{t.gallery.tagline}</h3>
+                <p className="text-pretty text-stone-400 max-w-2xl mx-auto font-light">{t.gallery.desc}</p>
             </div>
             
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                 {galleryImages.map((img, i) => (
-                    <div key={i} className="relative group overflow-hidden break-inside-avoid">
+                    <div key={i} className="relative group overflow-hidden break-inside-avoid border border-white/10 bg-[#1a1511]">
                         <button
                             type="button"
                             onClick={() => openImage(img, `Gallery ${i + 1}`)}
@@ -276,7 +326,7 @@ function Home() {
                             <img
                                 src={img}
                                 alt={`Gallery ${i + 1}`}
-                                className="w-full h-auto object-cover transition-all duration-700"
+                                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                             />
                         </button>
                         <div className="pointer-events-none absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
@@ -291,14 +341,14 @@ function Home() {
       </section>
 
       {/* Location & Map Section */}
-      <section id="location" className="py-32 px-6 bg-stone-900/30">
+      <section id="location" className="py-28 md:py-32 px-6 bg-[#120f0c]">
         <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-medium">{t.location.tagline}</h2>
-                    <h3 className="text-5xl font-serif mb-8 leading-tight">{t.location.title}</h3>
+                    <h3 className="text-balance text-5xl md:text-6xl font-serif mb-8 leading-tight">{t.location.title}</h3>
                     <div className="space-y-8">
-                        <div className="flex gap-6">
+                        <div className="flex gap-6 border border-white/10 bg-white/[0.03] p-5">
                             <div className="w-12 h-12 border border-gold/30 flex items-center justify-center text-gold shrink-0">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             </div>
@@ -307,7 +357,7 @@ function Home() {
                                 <p className="text-lg font-light leading-relaxed">{t.location.address}</p>
                             </div>
                         </div>
-                        <div className="flex gap-6">
+                        <div className="flex gap-6 border border-white/10 bg-white/[0.03] p-5">
                             <div className="w-12 h-12 border border-gold/30 flex items-center justify-center text-gold shrink-0">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 011.94.86l-.85 3a1 1 0 01-.62.74l-1.93.97a7 7 0 003.03 3.03l.97-1.93a1 1 0 01.74-.62l3-.85a1 1 0 011.08.58V19a2 2 0 01-2 2h-3.28a1 1 0 01-1.94-.86l.85-3a1 1 0 01.62-.74l1.93-.97a7 7 0 00-3.03-3.03l-.97 1.93a1 1 0 01-.74.62l-3 .85a1 1 0 01-1.08-.58V5z"></path></svg>
                             </div>
@@ -318,7 +368,7 @@ function Home() {
                                 </a>
                             </div>
                         </div>
-                        <div className="flex gap-6">
+                        <div className="flex gap-6 border border-white/10 bg-white/[0.03] p-5">
                              <div className="w-12 h-12 border border-gold/30 flex items-center justify-center text-gold shrink-0">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
@@ -333,7 +383,7 @@ function Home() {
                     </div>
                 </div>
                 
-                <div className="h-[500px] bg-stone-900 border border-stone-800 overflow-hidden relative transition-all duration-1000 group">
+                <div className="h-[500px] bg-stone-900 border border-white/10 overflow-hidden relative transition-all duration-1000 group shadow-2xl shadow-black/30">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.0253457176465!2d103.96674367586244!3d10.2167961899003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a78bf5dfd728bd%3A0x988fbc374f8b86e5!2zTXIgxJBlbiBiYXJiZXJzaG9w!5e0!3m2!1sen!2s!4v1714449800000!5m2!1sen!2s" 
                         width="100%" 
@@ -342,7 +392,7 @@ function Home() {
                         allowFullScreen 
                         loading="lazy" 
                         referrerPolicy="no-referrer-when-downgrade"
-                        className="opacity-60 group-hover:opacity-100 transition-opacity duration-1000"
+                        className="opacity-95 transition-opacity duration-1000"
                     ></iframe>
                 </div>
             </div>
@@ -350,7 +400,7 @@ function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-stone-900 border-t border-stone-800 py-20 px-6">
+      <footer className="bg-[#0b0907] border-t border-white/10 py-20 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
           <div className="col-span-2">
             <div className="text-3xl font-serif tracking-widest text-gold mb-8">MR. DEN</div>
@@ -379,12 +429,9 @@ function Home() {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between text-stone-600 text-[10px] uppercase tracking-widest font-bold">
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-stone-600 text-[10px] uppercase tracking-widest font-bold">
           <p>{t.footer.rights}</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
+          <p>Designed for appointments, walk-ins, and sharp first impressions.</p>
         </div>
       </footer>
 

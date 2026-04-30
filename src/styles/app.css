@@ -8,13 +8,35 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    background: #0b0907;
+  }
+
   html,
   body {
-    @apply font-sans text-stone-200 bg-stone-950;
+    @apply font-sans text-stone-200;
+    background: #0b0907;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+
+  * {
+    scrollbar-color: #d4af37 #0b0907;
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.35);
+    color: #fff8e7;
+  }
+
+  a,
+  button {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold;
   }
 
   .using-mouse * {
