@@ -411,14 +411,14 @@ function Home() {
           </div>
           <div>
             <h4 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">{t.footer.hours}</h4>
-            <ul className="text-stone-400 font-light space-y-2 text-sm sm:text-base">
-              <li className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+            <ul className="text-stone-400 font-light space-y-4 text-sm sm:space-y-2 sm:text-base">
+              <li className="grid gap-1 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-3">
                 <span className="min-w-0">{t.footer.daily}</span>
-                <span className="whitespace-nowrap text-right tabular-nums">8:30am - 8:30pm</span>
+                <span className="whitespace-nowrap tabular-nums sm:text-right">8:30am - 8:30pm</span>
               </li>
-              <li className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
+              <li className="grid gap-1 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-3">
                 <span className="min-w-0">{t.footer.sunday}</span>
-                <span className="whitespace-nowrap text-right tabular-nums">9:00am - 6:00pm</span>
+                <span className="whitespace-nowrap tabular-nums sm:text-right">9:00am - 6:00pm</span>
               </li>
             </ul>
           </div>

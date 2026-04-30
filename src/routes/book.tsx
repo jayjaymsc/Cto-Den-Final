@@ -145,7 +145,11 @@ function BookingPage() {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">{t.booking.email}</label>
-                                    <input className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors" placeholder="alex@example.com" />
+                                    <input type="email" className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors" placeholder="alex@example.com" />
+                                </div>
+                                <div className="space-y-2 md:col-span-2">
+                                    <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">{t.booking.phone}</label>
+                                    <input type="tel" inputMode="tel" className="w-full bg-[#120f0c] border border-white/10 p-4 focus:border-gold outline-none transition-colors" placeholder="+84 913 879 789" />
                                 </div>
                             </div>
                             <div className="space-y-2">
