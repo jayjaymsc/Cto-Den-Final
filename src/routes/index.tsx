@@ -12,6 +12,63 @@ export const Route = createFileRoute('/')({
   component: Home,
 })
 
+const webpSources: Record<string, string> = {
+  '/images/image (1).png': '/images/image (1).webp',
+  '/images/image.png': '/images/image.webp',
+  '/images/barbershop.jpg': '/images/barbershop.webp',
+  '/images/master.jpg': '/images/master.webp',
+  '/images/image (2).png': '/images/image (2).webp',
+  '/images/744026b4-146d-4969-9545-5532eed34562.jpg': '/images/744026b4-146d-4969-9545-5532eed34562.webp',
+  '/images/1.jpg': '/images/1.webp',
+  '/images/price.png': '/images/price.webp',
+  '/images/36df4a3d3ff348f686845c49cec40256.jpg': '/images/36df4a3d3ff348f686845c49cec40256.webp',
+}
+
+const imageDimensions: Record<string, { width: number; height: number }> = {
+  '/images/image (1).png': { width: 1904, height: 2540 },
+  '/images/image.png': { width: 1912, height: 2540 },
+  '/images/barbershop.jpg': { width: 4096, height: 2960 },
+  '/images/master.jpg': { width: 3072, height: 4096 },
+  '/images/image (2).png': { width: 1500, height: 2252 },
+  '/images/744026b4-146d-4969-9545-5532eed34562.jpg': { width: 4096, height: 3072 },
+  '/images/1.jpg': { width: 1904, height: 2540 },
+  '/images/price.png': { width: 671, height: 845 },
+  '/images/514535933_647796581645482_4151797699682575246_n.jpg': { width: 2048, height: 1366 },
+  '/images/36df4a3d3ff348f686845c49cec40256.jpg': { width: 563, height: 998 },
+  '/images/main.jpg': { width: 1440, height: 960 },
+  '/images/massage.jpg': { width: 1440, height: 960 },
+  '/images/review-qr.png': { width: 400, height: 400 },
+}
+
+type OptimizedImageProps = {
+  src: string
+  alt: string
+  className?: string
+  loading?: 'eager' | 'lazy'
+  fetchPriority?: 'high' | 'low' | 'auto'
+}
+
+function OptimizedImage({ src, alt, className, loading = 'lazy', fetchPriority }: OptimizedImageProps) {
+  const webp = webpSources[src]
+  const dimensions = imageDimensions[src]
+
+  return (
+    <picture>
+      {webp && <source srcSet={webp} type="image/webp" />}
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        loading={loading}
+        decoding="async"
+        fetchPriority={fetchPriority}
+        width={dimensions?.width}
+        height={dimensions?.height}
+      />
+    </picture>
+  )
+}
+
 function Home() {
   const [lang, setLang] = useState<'en' | 'vi'>('en')
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
@@ -141,7 +198,13 @@ function Home() {
               className="relative h-[520px] w-full max-w-3xl overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
               aria-label="Open Mr. Den storefront image"
             >
-              <img src={heroImages[0].src} alt={heroImages[0].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+              <OptimizedImage
+                src={heroImages[0].src}
+                alt={heroImages[0].alt}
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                loading="eager"
+                fetchPriority="high"
+              />
             </button>
           </div>
         </div>
@@ -174,7 +237,7 @@ function Home() {
                     className="block w-full h-full cursor-zoom-in text-left"
                     aria-label={`Open ${service.title} image`}
                   >
-                    <img
+                    <OptimizedImage
                       src={serviceImages[i]}
                       alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -216,7 +279,7 @@ function Home() {
               className="block w-full cursor-zoom-in"
               aria-label="Open Mr. Den service price menu"
             >
-              <img
+              <OptimizedImage
                 src={images.price}
                 alt="Mr. Den service price menu"
                 className="w-full h-auto object-contain"
@@ -236,7 +299,7 @@ function Home() {
             className="relative z-10 block w-full overflow-hidden cursor-zoom-in text-left shadow-2xl shadow-black/40"
             aria-label="Open precision barbering image"
           >
-            <img
+            <OptimizedImage
               src={images.about}
               alt="Precision Barbering"
               className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
@@ -309,7 +372,7 @@ function Home() {
                             className="group flex items-center gap-4 border border-white/10 bg-white p-2 text-stone-950 transition-all hover:border-gold/60"
                             aria-label="Open review page from QR code"
                         >
-                            <img src="/images/review-qr.png" alt="Review QR code" className="h-24 w-24 object-contain" />
+                            <OptimizedImage src="/images/review-qr.png" alt="Review QR code" className="h-24 w-24 object-contain" />
                             <span className="hidden max-w-24 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 group-hover:text-stone-950 sm:block">Scan to review</span>
                         </a>
                     </div>
@@ -336,7 +399,7 @@ function Home() {
                             className="block w-full cursor-zoom-in text-left"
                             aria-label={`Open gallery image ${i + 1}`}
                         >
-                            <img
+                            <OptimizedImage
                                 src={img}
                                 alt={`Gallery ${i + 1}`}
                                 className="h-[380px] w-full object-contain transition-transform duration-700 group-hover:scale-[1.01]"
@@ -481,6 +544,7 @@ function Home() {
             src={selectedImage.src}
             alt={selectedImage.alt}
             className="max-w-full max-h-full object-contain shadow-2xl"
+            decoding="async"
             onClick={(event) => event.stopPropagation()}
           />
         </div>
