@@ -29,8 +29,6 @@ function Home() {
 
   const heroImages = [
     { src: '/images/main.jpg', alt: 'Mr. Den storefront' },
-    { src: '/images/barbershop.jpg', alt: 'Mr. Den barbershop interior' },
-    { src: '/images/image.png', alt: 'Mr. Den cutting station' },
   ]
 
   const galleryImages = [
@@ -139,26 +137,10 @@ function Home() {
             <button
               type="button"
               onClick={() => openImage(heroImages[0].src, heroImages[0].alt)}
-              className="absolute right-0 top-0 h-[62%] w-[72%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
+              className="absolute inset-y-0 right-0 my-auto h-[76%] w-[82%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
               aria-label="Open Mr. Den storefront image"
             >
               <img src={heroImages[0].src} alt={heroImages[0].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-            </button>
-            <button
-              type="button"
-              onClick={() => openImage(heroImages[1].src, heroImages[1].alt)}
-              className="absolute left-0 bottom-0 h-[50%] w-[52%] overflow-hidden border border-white/10 bg-stone-900 text-left shadow-2xl shadow-black/40 cursor-zoom-in"
-              aria-label="Open Mr. Den interior image"
-            >
-              <img src={heroImages[1].src} alt={heroImages[1].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-            </button>
-            <button
-              type="button"
-              onClick={() => openImage(heroImages[2].src, heroImages[2].alt)}
-              className="absolute bottom-8 right-12 h-[38%] w-[36%] overflow-hidden border border-gold/30 bg-stone-900 text-left shadow-2xl shadow-black/50 cursor-zoom-in"
-              aria-label="Open Mr. Den cutting station image"
-            >
-              <img src={heroImages[2].src} alt={heroImages[2].alt} className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
             </button>
           </div>
         </div>
