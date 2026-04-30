@@ -34,8 +34,8 @@ function Home() {
   const galleryImages = [
     '/images/744026b4-146d-4969-9545-5532eed34562.jpg',
     '/images/514535933_647796581645482_4151797699682575246_n.jpg',
-    '/images/image (2).png',
-    '/images/image.png'
+    '/images/image.png',
+    '/images/image (2).png'
   ]
 
   const serviceImages = [
@@ -271,7 +271,7 @@ function Home() {
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-                {t.testimonials.list.map((item, i) => (
+                {[t.testimonials.list[2], t.testimonials.list[1], t.testimonials.list[0]].map((item, i) => (
                     <div key={i} className="relative p-8 md:p-10 bg-[#1a1511] border border-white/10 flex flex-col justify-between">
                         <div className="text-gold mb-8">
                             <svg className="w-10 h-10 opacity-20" fill="currentColor" viewBox="0 0 32 32"><path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"></path></svg>
@@ -283,6 +283,37 @@ function Home() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="mt-8 border border-white/10 bg-[#1a1511] p-5 sm:p-6 md:p-8">
+                <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="max-w-2xl">
+                        <p className="text-gold uppercase tracking-[0.28em] text-xs font-bold mb-3">Share your visit</p>
+                        <h4 className="text-2xl md:text-3xl font-serif mb-3">Leave a review for Mr. Den</h4>
+                        <p className="text-pretty text-stone-400 font-light leading-relaxed">
+                            Your note helps the next guest choose their chair with confidence.
+                        </p>
+                    </div>
+                    <div className="flex w-full flex-col items-start gap-4 sm:w-auto sm:flex-row sm:items-center">
+                        <a
+                            href="https://reviewthis.biz/MrDenBarbershop"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex w-full justify-center bg-gold px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-stone-950 transition-all hover:bg-primary active:scale-[0.98] sm:w-auto"
+                        >
+                            Leave a review
+                        </a>
+                        <a
+                            href="https://reviewthis.biz/MrDenBarbershop"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 border border-white/10 bg-white p-2 text-stone-950 transition-all hover:border-gold/60"
+                            aria-label="Open review page from QR code"
+                        >
+                            <img src="/images/review-qr.png" alt="Review QR code" className="h-24 w-24 object-contain" />
+                            <span className="hidden max-w-24 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 group-hover:text-stone-950 sm:block">Scan to review</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
       </section>
